@@ -1,0 +1,42 @@
+# Quick WSL Installation Commands
+# Copy and paste these commands one by one into PowerShell (Run as Administrator)
+
+# ============================================
+# STEP 1: Enable PowerShell Scripts (if needed)
+# ============================================
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+
+# ============================================
+# STEP 2: Install WSL
+# ============================================
+wsl --install
+
+# After running the above command:
+# - You MUST restart your computer
+# - After restart, Ubuntu will open automatically
+# - Create a username and password when prompted
+
+# ============================================
+# STEP 3: After Restart - Install Dependencies
+# ============================================
+# Open Ubuntu from Start Menu and run these commands:
+
+# Update package list
+sudo apt update
+
+# Install build tools and libraries
+sudo apt install -y g++ liblzma-dev libxxhash-dev build-essential
+
+# Navigate to project
+cd /mnt/c/Users/Nagireddy123/Desktop/Project-f/phishsim
+
+# Build the C++ worker
+bash build.sh
+
+# Verify the build
+ls -lh ncd_worker
+
+# ============================================
+# STEP 4: Run the clustering
+# ============================================
+python fast_cluster.py
